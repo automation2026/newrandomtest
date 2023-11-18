@@ -73,7 +73,7 @@ redundancy
 !
 !
 interface GigabitEthernet0/0
- description This IS A TEST description
+ description This IS A TEST11 description
  vrf forwarding MGMT
  ip address 192.168.31.101 255.255.255.0
  duplex auto
