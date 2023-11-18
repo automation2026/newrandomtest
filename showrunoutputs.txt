@@ -1,0 +1,166 @@
+[1m[36mpull_show_run*******************************************************************[0m
+[0m[1m[34m* R1 ** changed : False ********************************************************[0m
+[0m[1m[32mvvvv pull_show_run ** changed : False vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv INFO[0m
+[0m[1m[32m---- send_command ** changed : False ------------------------------------------- INFO[0m
+[0mBuilding configuration...
+
+Current configuration : 3511 bytes
+!
+! Last configuration change at 15:16:17 UTC Sat Nov 18 2023 by cisco
+!
+version 15.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+no service password-encryption
+!
+hostname R1
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition MGMT
+ !
+ address-family ipv4
+ exit-address-family
+!
+!
+no aaa new-model
+!
+!
+!
+mmi polling-interval 60
+no mmi auto-configure
+no mmi pvc
+mmi snmp-timeout 180
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+ip domain name cisco
+ip cef
+no ipv6 cef
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+username cisco privilege 15 secret 9 $9$yUmAKn8OxeAk6f$2i32yLLMEW6GPN2SqRyk3pJE10IaJiTBluap5DB/HCQ
+username jradmin view restricted password 0 jradmin1
+!
+redundancy
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ description This IS A TEST description
+ vrf forwarding MGMT
+ ip address 192.168.31.101 255.255.255.0
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/2
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+interface GigabitEthernet0/3
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+ media-type rj45
+!
+router ospf 44
+ network 0.0.0.0 255.255.255.255 area 44
+!
+ip forward-protocol nd
+!
+!
+no ip http server
+no ip http secure-server
+ip ssh version 2
+!
+ipv6 ioam timestamp
+!
+snmp-server community IPvZero RO
+snmp-server chassis-id
+!
+!
+control-plane
+!
+banner exec ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner incoming ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+banner login ^C
+**************************************************************************
+* IOSv is strictly limited to use for evaluation, demonstration and IOS  *
+* education. IOSv is provided as-is and is not supported by Cisco's      *
+* Technical Advisory Center. Any use or disclosure, in whole or in part, *
+* of the IOSv Software or Documentation to any third party for any       *
+* purposes is expressly prohibited except as otherwise authorized by     *
+* Cisco in writing.                                                      *
+**************************************************************************^C
+!
+line con 0
+line aux 0
+line vty 0 4
+ privilege level 15
+ login local
+ transport input ssh
+!
+no scheduler allocate
+ntp server 1.1.1.1
+ntp server 55.66.11.33
+ntp server 4.4.4.4
+ntp server 88.99.55.12
+ntp server 6.6.6.6
+!
+end[0m
+[0m[1m[32m^^^^ END pull_show_run ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[0m
